@@ -12,12 +12,18 @@
 import pandas as pd
 import random
 
+# генерируем исходный DataFrame:
+
 lst = ['robot'] * 10 + ['human'] * 10
 random.shuffle(lst)
 data = pd.DataFrame({'whoAmI': lst})
 
+# преобразуем DataFrame в one hot формат:
+
 one_hot_data = data.copy()
 one_hot_data['robot'] = (data['whoAmI'] == 'robot').astype(int)
 one_hot_data['human'] = (data['whoAmI'] == 'human').astype(int)
+
+# выводим преобразованный DataFrame
 
 print(one_hot_data.head())
